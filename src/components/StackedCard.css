@@ -1,0 +1,210 @@
+.stacked-card {
+  position: relative;
+  width: 440px;
+  height: 342px;
+  flex-shrink: 0;
+}
+
+.stacked-card__tab,
+.stacked-card__front {
+  transform-origin: 50% 100%;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.stacked-card__tab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 22px;
+  padding-top: 12px;
+}
+
+.stacked-card__tab--back {
+  left: 70px;
+  top: 0;
+  width: 300px;
+  height: 64px;
+  background: var(--color-tab-back);
+  z-index: 1;
+}
+
+.stacked-card__tab--mid {
+  left: 45px;
+  top: 18px;
+  width: 350px;
+  height: 64px;
+  background: var(--color-tab-mid);
+  z-index: 2;
+}
+
+.stacked-card__tab-label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 280ms ease,
+    transform 280ms ease,
+    color 280ms ease;
+}
+
+.stacked-card__tab--mid .stacked-card__tab-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stacked-card__front {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 400px;
+  height: 302px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-tile);
+  padding: 32px;
+  background: linear-gradient(90deg, var(--color-card-from), var(--color-card-to));
+  box-shadow: var(--shadow-card);
+  color: #fff;
+}
+
+.stacked-card--compare .stacked-card__front {
+  gap: 42px;
+}
+
+.stacked-card--calculator .stacked-card__front {
+  justify-content: space-between;
+  gap: 0;
+}
+
+.stacked-card__eyebrow {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.075px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.stacked-card__value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.stacked-card__big {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 50px;
+  letter-spacing: -0.88px;
+  color: #fff;
+}
+
+.stacked-card__strips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  height: 196px;
+}
+
+.stacked-card__strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 52px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.stacked-card__strip--single {
+  margin-top: auto;
+}
+
+.stacked-card__strip-label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.07px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.stacked-card__strip-label--bold {
+  font-weight: 700;
+}
+
+.stacked-card__strip-value {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.075px;
+  color: #fff;
+}
+
+/* Hover fan-out — matches Figma node 251:1953 */
+.solution-tile:hover .stacked-card--compare .stacked-card__tab--back,
+.solution-tile:focus-within .stacked-card--compare .stacked-card__tab--back {
+  transform: rotate(-2.62deg);
+}
+
+.solution-tile:hover .stacked-card--compare .stacked-card__tab--mid,
+.solution-tile:focus-within .stacked-card--compare .stacked-card__tab--mid {
+  transform: rotate(-2.71deg);
+}
+
+.solution-tile:hover .stacked-card--compare .stacked-card__front,
+.solution-tile:focus-within .stacked-card--compare .stacked-card__front {
+  transform: rotate(-3.51deg);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+}
+
+.solution-tile:hover .stacked-card--calculator .stacked-card__tab--back,
+.solution-tile:focus-within .stacked-card--calculator .stacked-card__tab--back {
+  transform: rotate(-1.16deg);
+}
+
+.solution-tile:hover .stacked-card--calculator .stacked-card__tab--mid,
+.solution-tile:focus-within .stacked-card--calculator .stacked-card__tab--mid {
+  transform: rotate(-2.14deg);
+}
+
+.solution-tile:hover .stacked-card--calculator .stacked-card__front,
+.solution-tile:focus-within .stacked-card--calculator .stacked-card__front {
+  transform: rotate(-3.28deg);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+}
+
+.solution-tile:hover .stacked-card__tab-label,
+.solution-tile:focus-within .stacked-card__tab-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .stacked-card {
+    width: min(440px, 100%);
+    height: auto;
+    aspect-ratio: 440 / 342;
+  }
+
+  .stacked-card__front {
+    width: min(400px, calc(100% - 40px));
+  }
+}
